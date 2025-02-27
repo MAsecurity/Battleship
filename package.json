@@ -1,0 +1,26 @@
+{
+  "name": "repository-template",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open --config webpack.dev.js",
+    "pages": "git subtree push --prefix dist origin gh-pages",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "author": "Mohamed",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "html-webpack-plugin": "^5.6.0",
+    "prettier": "3.2.5",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "webpack-merge": "^5.10.0"
+  }
+}
