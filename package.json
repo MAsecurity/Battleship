@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack serve --open --config webpack.dev.js",
     "pages": "git subtree push --prefix dist origin gh-pages",
     "build": "webpack --config webpack.prod.js"
@@ -16,6 +16,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
     "prettier": "3.2.5",
     "style-loader": "^3.3.4",
     "webpack": "^5.90.3",

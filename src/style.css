@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, 'sans-serif';
+}
+.content{
+  min-height: 100vh;
+  background-color: #f0f9ff;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  gap: 10px;
+  padding: 20px 0px;
+}
+.battleship{
+  font-size: 64px;
+  font-weight: bold;
+  color: #082f49;
+  text-align: center;
+}
+.board-container{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board{
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  width: 50%;
+  height: 100%;
+  gap: 10px;
+  border: 8px solid #082f49;
+  border-radius: 4px;
+}
+.board-header{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.board-header-title-button-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.board-header-title-button-container .title{
+  font-size: 32px;
+  font-weight: bold;
+  color: #082f49;
+  text-align: center;
+}
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+.button-container button{
+  width: 100px;
+  height: 40px;
+  background-color: #082f49;
+  color: #f0f9ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.08s ease-in-out;
+}
+div button:hover{
+  background-color: #f0f9ff;
+  border: #082f49 4px solid;
+  border-radius: 2px;
+  color: #082f49;
+}
+div button:active{
+  opacity: 0.7;
+}
+.playing-board-container,.my-board-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.playing-board,.my-board{
+  border: #082f49 8px solid;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(10,1fr);
+}
+.playing-board {
+  width: 64%;
+  height: 100%;
+}
+.my-board {
+  width: 16%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+.playing-board div,.my-board div{
+  border-bottom: 2px solid rgba(8,47, 73, 0.7);
+  border-right: 2px solid rgba(8,47, 73, 0.7);
+  cursor: pointer;
+}
+
+.hovering{
+  background-color: #00a6f4;
+}
+.clicked,.placed-ship {
+  background-color: #082f49;
+}
+.hit{
+  background-color: #471400;
+}
+.missed{
+  background-color: #747B46;
+}
