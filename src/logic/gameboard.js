@@ -50,6 +50,24 @@ function gameBoard() {
     }
     return false;
   }
-  return { gameBoard,placeShip,recieveAttack,allShipsAreSunked};
+  function resetting(){
+    let getArray = [];
+    let i=0;
+    while(i<10){
+      let newArr = new Array();
+      newArr.length = 10;
+      newArr.fill(0);
+      getArray.push(newArr);
+      i++;
+    }
+    gameBoard = getArray 
+    let arr = ['carrier','battleship','submarine','cruiser','destroyer'];
+    for(let i=0; i<arr.length; i++){
+      myShips[arr[i]].sunk = false;
+      myShips[arr[i]].numOfHits = 0;
+    }
+    map = new Map();
+  }
+  return { gameBoard,placeShip,recieveAttack,allShipsAreSunked,resetting};
 }
 export{gameBoard}

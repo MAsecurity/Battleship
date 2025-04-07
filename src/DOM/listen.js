@@ -19,6 +19,9 @@ let curStatus = status();
 let play = players()
 let humanPlayer = play.human;
 let computerPlayer = play.computer;
+
+let compSet = new Set();
+let humanSet = new Set();
 computerShips(computerPlayer);
 let gameStart = false;
 function addListeners(){
@@ -98,7 +101,21 @@ function attack(coordinates){
   let getTitle = document.querySelector(".title");
   let c1 = Math.floor(Math.random() * 10);
   let c2 = Math.floor(Math.random() * 10);
-  let computerCoordinates = [c1,c2];
+  let computerCoordinates = [c1,c2]
+  if(humanSet.has(JSON.stringify(coordinates))){
+    console.log("same coordinates")
+    return;
+  }else if(compSet.has(JSON.stringify(computerCoordinates))){
+    while(true){
+      console.log("oops computer made same coordinates")
+      computerCoordinates = [(Math.floor(Math.random() * 10)),(Math.floor(Math.random() * 10))]
+      if(!compSet.has(computerCoordinates)){
+        break;
+      }
+    }
+  }
+  humanSet.add(JSON.stringify(coordinates));
+  compSet.add(JSON.stringify(computerCoordinates))
   computerPlayer.recieveAttack(coordinates);
   humanPlayer.recieveAttack(computerCoordinates);
 
@@ -120,12 +137,37 @@ function attack(coordinates){
 
 
 }
+function playAgain(){
+  gameStart = false;
+  reset();
+  resetHeader();
+  addDivs();
+  humanPlayer.resetting();
+  computerPlayer.resetting();
+  compSet = new Set();
+  humanSet = new Set();
+  let buttonContainer = document.querySelector(".button-container");
+  const button = document.createElement("button");
+  button.textContent = "Rotate";
+  buttonContainer.appendChild(button)
+  let title = document.querySelector(".title");
+  title.textContent = "Add your carrier ship"
+  button.onclick = () => {
+    buttonClicked()
+  }
+  console.log(humanPlayer.gameBoard)
+
+}
 function gameOver(){
   gameStart = 'finish';
   reset();
   let buttonContainer = document.querySelector(".button-container");
   const button = document.createElement("button");
   button.textContent = "Play again"
+  button.onclick = () => {
+    playAgain()
+  }
+  buttonContainer.appendChild(button)
   addDivs();
   gameOverUpdate(computerPlayer.gameBoard,humanPlayer.gameBoard)
 
