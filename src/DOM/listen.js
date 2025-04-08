@@ -14,6 +14,7 @@ import { updateAttackMain } from "./displayBoard";
 import { updateAttackmini } from "./displayBoard";
 import { computerShips } from "../logic/computerShips";
 import { gameOverUpdate } from "./displayBoard";
+import { arrayShips } from "./shipsArr";
 let myShips = ships()
 let curStatus = status();
 let play = players()
@@ -118,7 +119,7 @@ function attack(coordinates){
   compSet.add(JSON.stringify(computerCoordinates))
   computerPlayer.recieveAttack(coordinates);
   humanPlayer.recieveAttack(computerCoordinates);
-
+  
 
   if (computerPlayer.allShipsAreSunked()){
     getTitle.textContent = "Human player won";
@@ -138,40 +139,42 @@ function attack(coordinates){
 
 }
 function playAgain(){
+  resetHeader()
   gameStart = false;
   reset();
-  resetHeader();
   addDivs();
-  humanPlayer.resetting();
-  computerPlayer.resetting();
-  compSet = new Set();
-  humanSet = new Set();
+  let title = document.querySelector(".title");
+  curStatus.arr = [...arrayShips];
+  curStatus.curShip = curStatus.arr[0];
+  title.textContent = `Add your ${curStatus.curShip} ship`;
+  curStatus.rotation = "horizontal";
   let buttonContainer = document.querySelector(".button-container");
   const button = document.createElement("button");
+  button.onclick = () => {
+    buttonClicked();
+  }
   button.textContent = "Rotate";
   buttonContainer.appendChild(button)
-  let title = document.querySelector(".title");
-  title.textContent = "Add your carrier ship"
-  button.onclick = () => {
-    buttonClicked()
-  }
-  console.log(humanPlayer.gameBoard)
+
+  // humanPlayer.gameBoard = [...createArr()]
+  // computerPlayer.gameBoard = [...createArr()]
+  humanPlayer.resetting();
+  computerPlayer.resetting();
+  console.log(humanPlayer.gameBoard,"human-gameboard");
+  console.log(computerPlayer.gameBoard, "computer-gameboard")
 
 }
 function gameOver(){
   gameStart = 'finish';
   reset();
+  addDivs();
   let buttonContainer = document.querySelector(".button-container");
   const button = document.createElement("button");
-  button.textContent = "Play again"
   button.onclick = () => {
-    playAgain()
+    playAgain();
   }
+  button.textContent = "Play again";
   buttonContainer.appendChild(button)
-  addDivs();
   gameOverUpdate(computerPlayer.gameBoard,humanPlayer.gameBoard)
-
-
-
 }
 export {onHovering, onClicked, buttonClicked,attack,addListeners}

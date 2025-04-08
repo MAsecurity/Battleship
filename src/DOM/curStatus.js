@@ -1,6 +1,7 @@
+import { arrayShips } from "./shipsArr";
 function status(){
   let rotation = 'horizontal';
-  let arr  = ['carrier','battleship','cruiser','submarine','destroyer'];
+  let arr  = [...arrayShips];
   let curShip = arr[0];
   return {curShip,rotation,arr};
 }
