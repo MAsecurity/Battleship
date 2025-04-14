@@ -1,5 +1,5 @@
 # Battleship
-Live demo &#128073; 
+Live demo &#128073; https://masecurity.github.io/Battleship/
 ## What is this project about?
 <img src="./readme-assets/battleship.png" width="100%" height="auto">
 <br>
