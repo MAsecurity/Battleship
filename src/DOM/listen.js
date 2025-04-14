@@ -15,6 +15,7 @@ import { updateAttackmini } from "./displayBoard";
 import { computerShips } from "../logic/computerShips";
 import { gameOverUpdate } from "./displayBoard";
 import { arrayShips } from "./shipsArr";
+import { playGameReset } from "./reset";
 let myShips = ships()
 let curStatus = status();
 let play = players()
@@ -139,6 +140,9 @@ function attack(coordinates){
 
 }
 function playAgain(){
+  compSet = new Set();
+  humanSet = new Set();
+  playGameReset(humanPlayer.gameBoard,computerPlayer.gameBoard)
   resetHeader()
   gameStart = false;
   reset();

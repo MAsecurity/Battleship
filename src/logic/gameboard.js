@@ -5,7 +5,7 @@ import { ships } from "./ship";
 import { createArr } from "../logic/createArr";
 function gameBoard() {
   let myShips = ships();
-  let gameBoard = [...createArr()];
+  let gameBoard = createArr();
   let map = new Map();
 
   function placeShip(coordinates, rotation, shipName) {
@@ -50,7 +50,6 @@ function gameBoard() {
     return false;
   }
   function resetting(){
-    gameBoard = [...createArr()]
     let arr = ['carrier','battleship','submarine','cruiser','destroyer'];
     for(let i=0; i<arr.length; i++){
       myShips[arr[i]].sunk = false;
