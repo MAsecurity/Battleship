@@ -1,7 +1,7 @@
-function createArr(){
+function createArr() {
   let arr = [];
-  let i=0;
-  while(i<10){
+  let i = 0;
+  while (i < 10) {
     let newArr = new Array();
     newArr.length = 10;
     newArr.fill(0);
@@ -9,7 +9,6 @@ function createArr(){
     i++;
   }
   return arr;
-
 }
 
-export {createArr}
+export { createArr };

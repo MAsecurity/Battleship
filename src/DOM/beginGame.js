@@ -1,3 +1,1 @@
-function beginGame(){
-  
-}
+function beginGame() {}

@@ -1,7 +1,7 @@
 import { gameBoard } from "./gameboard";
-function players(){
+function players() {
   let human = gameBoard();
-  let computer = gameBoard()
-  return {human,computer}
+  let computer = gameBoard();
+  return { human, computer };
 }
-export {players}
+export { players };

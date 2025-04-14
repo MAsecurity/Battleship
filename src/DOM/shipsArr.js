@@ -1,2 +1,2 @@
-let arrayShips = ['carrier','battleship','submarine','cruiser','destroyer'];
-export{arrayShips}
+let arrayShips = ["carrier", "battleship", "submarine", "cruiser", "destroyer"];
+export { arrayShips };

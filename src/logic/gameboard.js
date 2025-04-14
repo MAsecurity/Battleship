@@ -12,8 +12,8 @@ function gameBoard() {
     let curShip = myShips[shipName];
     let getRange = grabRange(coordinates, rotation, curShip.length);
     let verifyRange = validateRange(getRange);
-    let checkDuplicateCoordinates = duplicateCoordinates(getRange,gameBoard);
-    
+    let checkDuplicateCoordinates = duplicateCoordinates(getRange, gameBoard);
+
     if (verifyRange && !checkDuplicateCoordinates) {
       for (let i = 0; i < getRange.length; i++) {
         let num1 = getRange[i][0];
@@ -23,17 +23,18 @@ function gameBoard() {
       }
     }
     // console.log(gameBoard,getRange,verifyRange,checkDuplicateCoordinates)
-    console.log("final",gameBoard,map)
+    console.log("final", gameBoard, map);
   }
   function recieveAttack(coordinates) {
-    if(map.has(JSON.stringify(coordinates))){
+    if (map.has(JSON.stringify(coordinates))) {
       let getShipName = map.get(JSON.stringify(coordinates));
-      myShips.hit(myShips[getShipName])
-      myShips.isSunk(myShips[getShipName])
+      myShips.hit(myShips[getShipName]);
+      myShips.isSunk(myShips[getShipName]);
       gameBoard[coordinates[0]][coordinates[1]] = 2; // hit ship
-
-    }else{
+      return 2;
+    } else {
       gameBoard[coordinates[0]][coordinates[1]] = -1; // missed shot
+      return -1;
     }
   }
   function allShipsAreSunked() {
@@ -44,20 +45,20 @@ function gameBoard() {
       myShips.cruiser.sunk &&
       myShips.destroyer.sunk
     ) {
-      console.log(myShips.destroyer)
+      console.log(myShips.destroyer);
       return true;
     }
     return false;
   }
-  function resetting(){
-    let arr = ['carrier','battleship','submarine','cruiser','destroyer'];
-    for(let i=0; i<arr.length; i++){
+  function resetting() {
+    let arr = ["carrier", "battleship", "submarine", "cruiser", "destroyer"];
+    for (let i = 0; i < arr.length; i++) {
       myShips[arr[i]].sunk = false;
       myShips[arr[i]].numOfHits = 0;
     }
     map = new Map();
-    console.log("Reset",map,myShips,gameBoard)
+    console.log("Reset", map, myShips, gameBoard);
   }
-  return { gameBoard,placeShip,recieveAttack,allShipsAreSunked,resetting};
+  return { gameBoard, placeShip, recieveAttack, allShipsAreSunked, resetting };
 }
-export{gameBoard}
+export { gameBoard };
