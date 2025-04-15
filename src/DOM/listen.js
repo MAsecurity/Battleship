@@ -121,16 +121,16 @@ function attack(coordinates) {
         break;
       }
     }
-  }else if(possibleMoves.length){
+  } else if (possibleMoves.length) {
     let newArr = [];
-    for(let i=0; i<possibleMoves.length; i++){
-      if(!compSet.has(JSON.stringify(possibleMoves[i]))){
-        newArr.push(possibleMoves[i])
+    for (let i = 0; i < possibleMoves.length; i++) {
+      if (!compSet.has(JSON.stringify(possibleMoves[i]))) {
+        newArr.push(possibleMoves[i]);
       }
     }
-    if(newArr.length){
+    if (newArr.length) {
       possibleMoves = newArr;
-      console.log(`Possible Moves: ${possibleMoves}`)
+      console.log(`Possible Moves: ${possibleMoves}`);
       computerCoordinates = possibleMoves.shift();
     }
   }
@@ -138,7 +138,7 @@ function attack(coordinates) {
   compSet.add(JSON.stringify(computerCoordinates));
   computerPlayer.recieveAttack(coordinates);
   let compAttack = humanPlayer.recieveAttack(computerCoordinates);
-  if(compAttack == 2){
+  if (compAttack == 2) {
     let newArr = optimalMoves(computerCoordinates);
     possibleMoves = newArr;
   }
@@ -193,19 +193,18 @@ function gameOver() {
   buttonContainer.appendChild(button);
   gameOverUpdate(computerPlayer.gameBoard, humanPlayer.gameBoard);
 }
-function optimalMoves(compCoor){
+function optimalMoves(compCoor) {
   let arr = [];
   let finalArr = [];
-  arr.push([compCoor[0]+1,compCoor[1]]);
-  arr.push([compCoor[0]-1,compCoor[1]]);
-  arr.push([compCoor[0],compCoor[1]+1]);
-  arr.push([compCoor[0],compCoor[1]-1]);
-  for(let i=0; i<arr.length; i++){
-    if(validateRange([arr[i]]) && !compSet.has(JSON.stringify(arr[i]))){
-      finalArr.push(arr[i])
+  arr.push([compCoor[0] + 1, compCoor[1]]);
+  arr.push([compCoor[0] - 1, compCoor[1]]);
+  arr.push([compCoor[0], compCoor[1] + 1]);
+  arr.push([compCoor[0], compCoor[1] - 1]);
+  for (let i = 0; i < arr.length; i++) {
+    if (validateRange([arr[i]]) && !compSet.has(JSON.stringify(arr[i]))) {
+      finalArr.push(arr[i]);
     }
   }
   return finalArr;
-
 }
 export { onHovering, onClicked, buttonClicked, attack, addListeners };
